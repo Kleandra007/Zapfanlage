@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dialektik der Zapfanlage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #f2f2f0;
+      --mid: #888;
+      --rule: #1e1e1e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'IBM Plex Serif', Georgia, serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '§';
+      position: absolute;
+      right: -0.05em;
+      top: -0.1em;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(14rem, 32vw, 24rem);
+      color: rgba(255,255,255,0.025);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .header-inner {
+      padding: 3rem 2.5rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1rem;
+    }
+
+    .site-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.8rem, 13vw, 10rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      color: var(--white);
+    }
+
+    .site-title span {
+      display: block;
+      color: var(--mid);
+      font-size: 0.52em;
+      letter-spacing: 0.07em;
+    }
+
+    .header-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-top: 1px solid var(--rule);
+      background: #111;
+    }
+
+    .header-bar .item {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-right: 1px solid var(--rule);
+    }
+
+    .header-bar .item span { color: var(--mid); }
+    .header-bar .item strong { color: var(--white); font-weight: 700; }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2.5rem 6rem;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    @media (max-width: 680px) {
+      .intro { grid-template-columns: 1fr; }
+      .info-card { border-left: none; border-top: 1px solid var(--rule); padding: 2rem 0; }
+    }
+
+    .intro-text {
+      padding: 3rem 3rem 3rem 0;
+      border-right: 1px solid var(--rule);
+    }
+
+    .intro-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #bbb;
+      margin-bottom: 1.2rem;
+    }
+
+    .intro-text p:last-child { margin-bottom: 0; }
+    .intro-text em { color: var(--white); font-style: italic; }
+
+    .intro-text p strong {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9em;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .info-card {
+      padding: 3rem 0 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+    }
+
+    .info-block .label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--mid);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .info-block .value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      color: var(--white);
+    }
+
+    .info-block .sub {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: #555;
+      margin-top: 0.3rem;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 2.5rem 0 1.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-head h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: 0.06em;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .section-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6rem;
+      color: #444;
+      letter-spacing: 0.2em;
+    }
+
+    /* ── CONCEPT ── */
+    .concept { border-bottom: 1px solid var(--rule); }
+
+    .concept p {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #bbb;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .concept p:last-child { border-bottom: none; }
+    .concept em { color: var(--white); font-style: italic; }
+
+    .pull {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+      letter-spacing: 0.04em;
+      color: var(--white);
+      border-left: 3px solid var(--white);
+      padding: 1rem 0 1rem 1.5rem;
+      margin: 0;
+      line-height: 1.25;
+    }
+
+    /* ── READING LIST ── */
+    .reading-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      border-left: 1px solid var(--rule);
+      border-top: 1px solid var(--rule);
+      margin-bottom: 0;
+    }
+
+    .thinker {
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 1.2rem 1.2rem 1.1rem;
+      transition: background 0.12s;
+    }
+
+    .thinker:hover { background: #111; }
+
+    .thinker .num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.52rem;
+      color: #333;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.5rem;
+    }
+
+    .thinker .name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    .thinker .years {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--mid);
+      margin-top: 0.3rem;
+    }
+
+    .thinker .tag {
+      font-family: 'IBM Plex Serif', serif;
+      font-style: italic;
+      font-size: 0.7rem;
+      color: #555;
+      margin-top: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .thinker.open {
+      background: #141414;
+      border: 1px dashed #444;
+    }
+
+    .thinker.open .num { color: #555; }
+
+    .thinker.open .name {
+      color: #aaa;
+      font-size: 1rem;
+    }
+
+    .thinker.open .tag { color: #666; margin-top: 0.8rem; }
+
+    /* ── MITMACHEN ── */
+    .mitmachen { border-bottom: 1px solid var(--rule); }
+
+    .mitmachen p {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #bbb;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .mitmachen p:last-child { border-bottom: none; }
+    .mitmachen em { color: var(--white); font-style: italic; }
+
+    /* ── DOWNLOADS ── */
+    .downloads { margin-top: 0; }
+
+    .download-item {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: var(--white);
+      transition: padding 0.15s, background 0.15s;
+    }
+
+    .download-item:hover {
+      background: #111;
+      padding-left: 0.8rem;
+      padding-right: 0.8rem;
+      margin: 0 -0.8rem;
+      width: calc(100% + 1.6rem);
+    }
+
+    .dl-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.58rem;
+      color: #333;
+      letter-spacing: 0.15em;
+      text-align: right;
+    }
+
+    .dl-title { font-size: 0.95rem; color: var(--white); }
+
+    .dl-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--mid);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    .dl-arrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .download-item.placeholder {
+      opacity: 0.55;
+      pointer-events: none;
+      border: 1px dashed #444;
+      padding: 1.2rem 0.8rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 1.8rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .f-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: #333;
+    }
+
+    .f-info {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #333;
+    }
+
+    /* ── FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header        { animation: fadeUp 0.5s ease both; }
+    .intro        { animation: fadeUp 0.5s ease 0.08s both; }
+    .concept      { animation: fadeUp 0.5s ease 0.16s both; }
+    .reading-list { animation: fadeUp 0.5s ease 0.22s both; }
+    .mitmachen    { animation: fadeUp 0.5s ease 0.28s both; }
+    .downloads    { animation: fadeUp 0.5s ease 0.34s both; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="eyebrow">Politisch-philosophischer Lesekreis &nbsp;·&nbsp; Köln-Ehrenfeld</div>
+    <div class="site-title">
+      Dialektik
+      <span>der Zapfanlage</span>
+    </div>
+  </div>
+  <div class="header-bar">
+    <div class="item"><span>Wann — </span><strong>Dienstags, 20:00 Uhr</strong></div>
+    <div class="item"><span>Wo — </span><strong>Müllers, Köln-Ehrenfeld</strong></div>
+    <div class="item"><span>Erster Abend — </span><strong>18. März 2026</strong></div>
+    <div class="item"><span>Eintritt — </span><strong>Frei</strong></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="intro">
+    <div class="intro-text">
+      <p>Eine Zapfanlage funktioniert durch Widerspruch. Druck gegen Flüssigkeit. Kohlensäure gegen Schwerkraft. Schaum gegen Ungeduld. Erst wenn diese Gegensätze sich in der richtigen Spannung begegnen, entsteht etwas Trinkbares.</p>
+      <p>Die Philosophie nennt das <em>Dialektik</em> – das Denken, das nicht im Entweder-oder verharrt, sondern im Widerspruch selbst die Wahrheit sucht.</p>
+      <p>Wir finden: <strong>Das lässt sich wunderbar am Tresen üben.</strong></p>
+    </div>
+    <div class="info-card">
+      <div class="info-block">
+        <span class="label">Format</span>
+        <div class="value">Lesen<br/>Diskutieren<br/>Trinken</div>
+      </div>
+      <div class="info-block">
+        <span class="label">Vorkenntnisse</span>
+        <div class="value">Keine</div>
+        <div class="sub">Neugier genügt</div>
+      </div>
+      <div class="info-block">
+        <span class="label">Wo &amp; Wann</span>
+        <div class="value">Müllers<br/>Di. 20:00</div>
+        <div class="sub">Köln-Ehrenfeld · Eintritt frei</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-head">
+    <span class="section-num">01</span>
+    <h2>Das Konzept</h2>
+  </div>
+
+  <section class="concept">
+    <p>Jeden Dienstagabend verwandelt sich ein Stammtisch in einen kleinen Salon der kritischen Theorie. Wir lesen gemeinsam kurze Passagen aus der politischen Philosophie – von <em>Hobbes</em> bis <em>Butler</em> – und diskutieren, was sie uns heute noch zu sagen haben. Oder warum sie uns wütend machen. Oder warum beides dasselbe ist.</p>
+    <div class="pull">These trifft Antithese.<br/>Schaum entsteht.<br/>Das nennt man Synthese.<br/>Oder das zweite Bier.</div>
+    <p>Keine Vorkenntnisse nötig – nur Neugier und die Bereitschaft, einen Text zu lesen und sich darauf einzulassen. Der Kanon ist ein Vorschlag, kein Dogma. Wer eigene Texte mitbringen möchte, stimmt mit der Runde ab. <em>Die Zapfanlage gehört allen.</em></p>
+    <p>Jede Sitzung ist in sich abgeschlossen. Wer eine Woche verpasst, kann problemlos wieder einsteigen – die Widersprüche warten.</p>
+  </section>
+
+  <div class="section-head">
+    <span class="section-num">02</span>
+    <h2>Der Kanon — ein erster Entwurf</h2>
+  </div>
+
+  <div class="reading-list">
+    <div class="thinker"><div class="num">01</div><div class="name">Thomas Hobbes</div><div class="years">1588–1679</div><div class="tag">Macht, Staat, Naturzustand</div></div>
+    <div class="thinker"><div class="num">02</div><div class="name">G.W.F. Hegel</div><div class="years">1770–1831</div><div class="tag">Dialektik, Geschichte, Geist</div></div>
+    <div class="thinker"><div class="num">03</div><div class="name">Karl Marx</div><div class="years">1818–1883</div><div class="tag">Kapital, Klasse, Ideologie</div></div>
+    <div class="thinker"><div class="num">04</div><div class="name">Antonio Gramsci</div><div class="years">1891–1937</div><div class="tag">Hegemonie, Zivilgesellschaft</div></div>
+    <div class="thinker"><div class="num">05</div><div class="name">Walter Benjamin</div><div class="years">1892–1940</div><div class="tag">Geschichte, Erinnerung, Messianismus</div></div>
+    <div class="thinker"><div class="num">06</div><div class="name">Hannah Arendt</div><div class="years">1906–1975</div><div class="tag">Totalitarismus, Macht, Pluralität</div></div>
+    <div class="thinker"><div class="num">07</div><div class="name">Adorno &amp; Horkheimer</div><div class="years">1944</div><div class="tag">Dialektik der Aufklärung</div></div>
+    <div class="thinker"><div class="num">08</div><div class="name">Frantz Fanon</div><div class="years">1925–1961</div><div class="tag">Kolonialismus, Gewalt, Befreiung</div></div>
+    <div class="thinker"><div class="num">09</div><div class="name">Michel Foucault</div><div class="years">1926–1984</div><div class="tag">Macht, Wissen, Diskurs</div></div>
+    <div class="thinker"><div class="num">10</div><div class="name">Pierre Bourdieu</div><div class="years">1930–2002</div><div class="tag">Kapital, Feld, Habitus</div></div>
+    <div class="thinker"><div class="num">11</div><div class="name">Jürgen Habermas</div><div class="years">1929–</div><div class="tag">Kommunikatives Handeln</div></div>
+    <div class="thinker"><div class="num">12</div><div class="name">bell hooks</div><div class="years">1952–2021</div><div class="tag">Feminismus, Race, Klasse</div></div>
+    <div class="thinker"><div class="num">13</div><div class="name">Axel Honneth</div><div class="years">1949–</div><div class="tag">Anerkennung, Kampf</div></div>
+    <div class="thinker"><div class="num">14</div><div class="name">Judith Butler</div><div class="years">1956–</div><div class="tag">Performativität, Körper, Norm</div></div>
+    <div class="thinker"><div class="num">15</div><div class="name">Achille Mbembe</div><div class="years">1957–</div><div class="tag">Nekropolitik, Postkolonialismus</div></div>
+    <div class="thinker"><div class="num">16</div><div class="name">Chantal Mouffe</div><div class="years">1943–</div><div class="tag">Demokratie, Antagonismus, Populismus</div></div>
+    <div class="thinker"><div class="num">17</div><div class="name">Silvia Federici</div><div class="years">1942–</div><div class="tag">Reproduktionsarbeit, Kapitalismus</div></div>
+    <div class="thinker open"><div class="num">?</div><div class="name">Dein Vorschlag</div><div class="tag">Bring einen Text mit</div></div>
+  </div>
+
+  <div class="section-head">
+    <span class="section-num">03</span>
+    <h2>Mitmachen</h2>
+  </div>
+
+  <section class="mitmachen">
+    <p>Der Lesekreis ist offen für alle. Ob du Hegel gelesen hast oder nicht – was zählt, ist die Bereitschaft, einen Text zu lesen und darüber nachzudenken. Wer bisher dachte, Philosophie sei etwas für Hörsäle und Elfenbeintürme, ist hier besonders willkommen.</p>
+    <p>Texte werden jeweils eine Woche vorher hier zum Download bereitgestellt. Du kannst auch eigene Lektürevorschläge einbringen. Die Runde entscheidet. Mehrheitsprinzip, solange es kein Konsens ist. <em>(Habermas hätte das anders gewollt. Darüber reden wir dann, wenn wir bei Habermas sind.)</em></p>
+  </section>
+
+  <div class="section-head">
+    <span class="section-num">04</span>
+    <h2>Texte zum Download</h2>
+  </div>
+
+  <div class="downloads">
+    <a class="download-item" href="https://www.bpb.de/shop/zeitschriften/apuz/freiheit-und-sicherheit-2022/511501/zwischen-leviathan-und-kantischem-rechtszustand/" target="_blank" rel="noopener">
+      <div class="dl-num">01a</div>
+      <div>
+        <div class="dl-title">Hobbes: Naturzustand &amp; Gesellschaftsvertrag — Einführung</div>
+        <div class="dl-meta">18. März 2026 · Einstieg · bpb.de · Deutsch · kostenlos</div>
+      </div>
+      <div class="dl-arrow">↗</div>
+    </a>
+    <a class="download-item" href="https://philosophie.phil-fak.uni-koeln.de/sites/philo-sem/Personen/Huettemann/Naturgesetzt_und_Staasvertrag_bei_Hobbes.pdf" target="_blank" rel="noopener">
+      <div class="dl-num">01b</div>
+      <div>
+        <div class="dl-title">Hobbes: Naturzustand und Staatsvertrag — Aufsatz</div>
+        <div class="dl-meta">18. März 2026 · Vertiefung · Universität zu Köln-Ehrenfeld · Deutsch · PDF</div>
+      </div>
+      <div class="dl-arrow">↗</div>
+    </a>
+    <div class="download-item placeholder">
+      <div class="dl-num" style="color:#666;">02</div>
+      <div>
+        <div class="dl-title" style="color:#999;">Nächster Text folgt</div>
+        <div class="dl-meta">25. März 2026 · Noch offen</div>
+      </div>
+      <div class="dl-arrow" style="color:#666;">↓</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="f-title">Dialektik der Zapfanlage</div>
+  <div class="f-info">Köln-Ehrenfeld &nbsp;·&nbsp; Müllers &nbsp;·&nbsp; Dienstags 20:00 &nbsp;·&nbsp; Eintritt frei</div>
+</footer>
+
+</body>
+</html>
