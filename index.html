@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Urbanist:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --black: #0a0a0a;
+      --black: #1c1c1e;
       --white: #f2f2f0;
       --mid: #888;
       --rule: #1e1e1e;
@@ -49,6 +49,24 @@
       padding: 3rem 2.5rem 2rem;
       position: relative;
       z-index: 2;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .header-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border-top: 1px solid var(--rule);
+      background: #242426;
+    }
+
+    .header-bar-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
     }
 
     .eyebrow {
@@ -73,14 +91,6 @@
       color: var(--mid);
       font-size: 0.52em;
       letter-spacing: 0.07em;
-    }
-
-    .header-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-      border-top: 1px solid var(--rule);
-      background: #111;
     }
 
     .header-bar .item {
@@ -233,7 +243,7 @@
       transition: background 0.12s;
     }
 
-    .thinker:hover { background: #111; }
+    .thinker:hover { background: #242426; }
 
     .thinker .num {
       font-family: 'Urbanist', Arial, sans-serif;
@@ -268,7 +278,7 @@
     }
 
     .thinker.open {
-      background: #141414;
+      background: #242426;
       border: 1px dashed #444;
     }
 
@@ -311,7 +321,7 @@
     }
 
     .download-item:hover {
-      background: #111;
+      background: #242426;
       padding-left: 0.8rem;
       padding-right: 0.8rem;
       margin: 0 -0.8rem;
@@ -456,10 +466,12 @@
     </div>
   </div>
   <div class="header-bar">
+    <div class="header-bar-inner">
     <div class="item"><span>Wann — </span><strong>Dienstags, 20:00 Uhr</strong></div>
     <div class="item"><span>Wo — </span><strong>Müllers, Köln-Ehrenfeld</strong></div>
     <div class="item"><span>Erster Abend — </span><strong>17. März 2026</strong></div>
     <div class="item"><span>Eintritt — </span><strong>Frei</strong></div>
+    </div>
   </div>
 </header>
 
@@ -589,7 +601,7 @@
     <h2>Kommentare &amp; Diskussion</h2>
   </div>
 
-  <section style="padding: 2rem 2.5rem; background: #1e1e1e; border-radius: 4px; margin: 0 2.5rem 2rem;">
+  <section style="padding: 2rem 2.5rem; background: #2c2c2e; border-radius: 4px; margin: 0 2.5rem 2rem;">
     <p style="font-family: 'IBM Plex Serif', Georgia, serif; font-size: 0.85rem; color: #aaa; margin-bottom: 1.5rem; line-height: 1.7;">
       <strong style="color: #f2f2f0;">Um zu kommentieren brauchst du einen GitHub-Account.</strong><br/>
       Das geht schnell und kostenlos: Geh auf 
