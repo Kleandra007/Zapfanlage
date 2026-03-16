@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dialektik der Zapfanlage</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Urbanist:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <style>
     :root {
       --black: #0a0a0a;
@@ -20,7 +20,7 @@
     body {
       background: var(--black);
       color: var(--white);
-      font-family: 'IBM Plex Serif', Georgia, serif;
+      font-family: 'Urbanist', Arial, sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
     }
@@ -52,7 +52,7 @@
     }
 
     .eyebrow {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'Urbanist', Arial, sans-serif;
       font-size: 0.62rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
@@ -84,7 +84,7 @@
     }
 
     .header-bar .item {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'Urbanist', Arial, sans-serif;
       font-size: 0.68rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -130,7 +130,7 @@
     .intro-text em { color: var(--white); font-style: italic; }
 
     .intro-text p strong {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'Urbanist', Arial, sans-serif;
       font-size: 0.9em;
       font-weight: 700;
       color: var(--white);
@@ -144,7 +144,7 @@
     }
 
     .info-block .label {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'Urbanist', Arial, sans-serif;
       font-size: 0.55rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
@@ -162,7 +162,7 @@
     }
 
     .info-block .sub {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'Urbanist', Arial, sans-serif;
       font-size: 0.65rem;
       color: #555;
       margin-top: 0.3rem;
@@ -186,7 +186,7 @@
     }
 
     .section-num {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'Urbanist', Arial, sans-serif;
       font-size: 0.6rem;
       color: #444;
       letter-spacing: 0.2em;
@@ -236,9 +236,9 @@
     .thinker:hover { background: #111; }
 
     .thinker .num {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'Urbanist', Arial, sans-serif;
       font-size: 0.52rem;
-      color: #333;
+      color: #555;
       letter-spacing: 0.2em;
       margin-bottom: 0.5rem;
     }
@@ -252,17 +252,17 @@
     }
 
     .thinker .years {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.58rem;
-      color: var(--mid);
+      font-family: 'Urbanist', Arial, sans-serif;
+      font-size: 0.68rem;
+      color: var(--white);
       margin-top: 0.3rem;
     }
 
     .thinker .tag {
-      font-family: 'IBM Plex Serif', serif;
+      font-family: 'Urbanist', Arial, sans-serif;
       font-style: italic;
-      font-size: 0.7rem;
-      color: #555;
+      font-size: 0.82rem;
+      color: var(--white);
       margin-top: 0.5rem;
       line-height: 1.4;
     }
@@ -319,7 +319,7 @@
     }
 
     .dl-num {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'Urbanist', Arial, sans-serif;
       font-size: 0.58rem;
       color: #333;
       letter-spacing: 0.15em;
@@ -329,7 +329,7 @@
     .dl-title { font-size: 0.95rem; color: var(--white); }
 
     .dl-meta {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'Urbanist', Arial, sans-serif;
       font-size: 0.58rem;
       color: var(--mid);
       letter-spacing: 0.1em;
@@ -338,7 +338,7 @@
     }
 
     .dl-arrow {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'Urbanist', Arial, sans-serif;
       font-size: 0.9rem;
       color: #333;
     }
@@ -369,7 +369,7 @@
     }
 
     .f-info {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'Urbanist', Arial, sans-serif;
       font-size: 0.58rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -388,6 +388,61 @@
     .reading-list { animation: fadeUp 0.5s ease 0.22s both; }
     .mitmachen    { animation: fadeUp 0.5s ease 0.28s both; }
     .downloads    { animation: fadeUp 0.5s ease 0.34s both; }
+
+    /* HABERMAS BANNER */
+    .habermas-banner {
+      background: #f2f2f0;
+      color: #0a0a0a;
+      border-bottom: 3px solid #0a0a0a;
+      padding: 1.2rem 2.5rem;
+    }
+    .hb-inner {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 2rem;
+      align-items: center;
+    }
+    .hb-left, .hb-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      flex-shrink: 0;
+    }
+    .hb-right { text-align: right; }
+    .hb-label, .hb-sonder-label {
+      font-family: 'Urbanist', Arial, sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #666;
+    }
+    .hb-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      line-height: 1;
+      color: #0a0a0a;
+    }
+    .hb-years, .hb-sonder-sub {
+      font-family: 'Urbanist', Arial, sans-serif;
+      font-size: 0.75rem;
+      color: #444;
+    }
+    .hb-center {
+      border-left: 2px solid #0a0a0a;
+      border-right: 2px solid #0a0a0a;
+      padding: 0 2rem;
+      font-family: 'IBM Plex Serif', Georgia, serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #222;
+    }
+    .hb-sonder-date {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: #0a0a0a;
+    }
   </style>
 </head>
 <body>
@@ -403,11 +458,26 @@
   <div class="header-bar">
     <div class="item"><span>Wann — </span><strong>Dienstags, 20:00 Uhr</strong></div>
     <div class="item"><span>Wo — </span><strong>Müllers, Köln-Ehrenfeld</strong></div>
-    <div class="item"><span>Erster Abend — </span><strong>18. März 2026</strong></div>
+    <div class="item"><span>Erster Abend — </span><strong>17. März 2026</strong></div>
     <div class="item"><span>Eintritt — </span><strong>Frei</strong></div>
   </div>
 </header>
 
+
+<div class="habermas-banner">
+  <div class="hb-inner">
+    <div class="hb-left">
+      <span class="hb-label">Zum Gedenken</span>
+      <span class="hb-name">Jürgen Habermas</span>
+      <span class="hb-years">1929 – 14. März 2026</span>
+    </div>
+<div class="hb-right">
+      <span class="hb-sonder-label">Sondersitzung</span>
+      <span class="hb-sonder-date">Dienstag, 24. März 2026</span>
+      <span class="hb-sonder-sub">Müllers · 20:00 Uhr · Eintritt frei</span>
+    </div>
+  </div>
+</div>
 <main>
 
   <section class="intro">
@@ -462,7 +532,7 @@
     <div class="thinker"><div class="num">08</div><div class="name">Frantz Fanon</div><div class="years">1925–1961</div><div class="tag">Kolonialismus, Gewalt, Befreiung</div></div>
     <div class="thinker"><div class="num">09</div><div class="name">Michel Foucault</div><div class="years">1926–1984</div><div class="tag">Macht, Wissen, Diskurs</div></div>
     <div class="thinker"><div class="num">10</div><div class="name">Pierre Bourdieu</div><div class="years">1930–2002</div><div class="tag">Kapital, Feld, Habitus</div></div>
-    <div class="thinker"><div class="num">11</div><div class="name">Jürgen Habermas</div><div class="years">1929–</div><div class="tag">Kommunikatives Handeln</div></div>
+    <div class="thinker"><div class="num">11</div><div class="name">Jürgen Habermas</div><div class="years">1929–2026</div><div class="tag">Kommunikatives Handeln</div></div>
     <div class="thinker"><div class="num">12</div><div class="name">bell hooks</div><div class="years">1952–2021</div><div class="tag">Feminismus, Race, Klasse</div></div>
     <div class="thinker"><div class="num">13</div><div class="name">Axel Honneth</div><div class="years">1949–</div><div class="tag">Anerkennung, Kampf</div></div>
     <div class="thinker"><div class="num">14</div><div class="name">Judith Butler</div><div class="years">1956–</div><div class="tag">Performativität, Körper, Norm</div></div>
@@ -492,7 +562,7 @@
       <div class="dl-num">01a</div>
       <div>
         <div class="dl-title">Hobbes: Naturzustand &amp; Gesellschaftsvertrag — Einführung</div>
-        <div class="dl-meta">18. März 2026 · Einstieg · bpb.de · Deutsch · kostenlos</div>
+        <div class="dl-meta">17. März 2026 · Einstieg · bpb.de · Deutsch · kostenlos</div>
       </div>
       <div class="dl-arrow">↗</div>
     </a>
@@ -500,20 +570,20 @@
       <div class="dl-num">01b</div>
       <div>
         <div class="dl-title">Hobbes: Naturzustand und Staatsvertrag — Aufsatz</div>
-        <div class="dl-meta">18. März 2026 · Vertiefung · Universität zu Köln · Deutsch · PDF</div>
+        <div class="dl-meta">17. März 2026 · Vertiefung · Universität zu Köln-Ehrenfeld · Deutsch · PDF</div>
       </div>
       <div class="dl-arrow">↗</div>
     </a>
-    <a class="download-item" href="Thesenpapier_Hobbes und der Leviathan.pdf" target="_blank" rel="noopener">
+    <a class="download-item" href="thesenpapier.pdf" target="_blank" rel="noopener">
       <div class="dl-num">02</div>
       <div>
         <div class="dl-title">Thesenpapier — Hobbes, Leviathan &amp; Naturzustand</div>
-        <div class="dl-meta">18. März 2026 · Erster Abend · Deutsch · PDF</div>
+        <div class="dl-meta">17. März 2026 · Erster Abend · Deutsch · PDF</div>
       </div>
       <div class="dl-arrow">↓</div>
     </a>
   </div>
- 
+
 </main>
 
 <footer>
