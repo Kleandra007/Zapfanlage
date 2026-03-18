@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jürgen Habermas – Dialektik der Zapfanlage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Urbanist:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #1c1c1e;
+      --white: #f2f2f0;
+      --mid: #888;
+      --rule: #2a2a2a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Urbanist', Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; }
+
+    /* NAV */
+    nav {
+      border-bottom: 1px solid var(--rule);
+      padding: 1rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--black);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-home {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-home span { color: var(--mid); }
+
+    .nav-back {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-back:hover { color: var(--white); }
+
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '12';
+      position: absolute;
+      right: -0.05em;
+      top: -0.1em;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(14rem, 32vw, 24rem);
+      color: rgba(255,255,255,0.025);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .header-inner {
+      padding: 3rem 2.5rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: end;
+    }
+
+    .eyebrow {
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 1rem;
+    }
+
+    .author-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      line-height: 0.9;
+      color: var(--white);
+    }
+
+    .author-subtitle {
+      font-size: 1rem;
+      color: var(--mid);
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .header-bar {
+      border-top: 1px solid var(--rule);
+      background: #242426;
+    }
+
+    .header-bar-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .header-bar .item {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-right: 1px solid var(--rule);
+    }
+
+    .header-bar .item span { color: var(--mid); }
+    .header-bar .item strong { color: var(--white); font-weight: 700; }
+
+    /* MAIN */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2.5rem 6rem;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      padding: 2.5rem 0 1.2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      color: var(--mid);
+      letter-spacing: 0.1em;
+    }
+
+    .section-head h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    /* BIO */
+    .bio {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    @media (max-width: 680px) {
+      .bio { grid-template-columns: 1fr; }
+      .bio-facts { border-left: none; border-top: 1px solid var(--rule); }
+    }
+
+    .bio-text {
+      padding: 2.5rem 3rem 2.5rem 0;
+      border-right: 1px solid var(--rule);
+    }
+
+    .bio-text p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #ddd;
+      margin-bottom: 1rem;
+    }
+
+    .bio-text p:last-child { margin-bottom: 0; }
+    .bio-text strong { color: var(--white); }
+    .bio-text em { color: var(--white); font-style: italic; }
+
+    .bio-facts { padding: 2.5rem 0 2.5rem 2rem; }
+
+    .fact { margin-bottom: 1.5rem; }
+
+    .fact-label {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.3rem;
+    }
+
+    .fact-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .fact-sub {
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-top: 0.2rem;
+    }
+
+    /* FOKUS-HINWEIS */
+    .fokus-hinweis {
+      background: #242426;
+      border-left: 3px solid #f2f2f0;
+      padding: 1rem 1.5rem;
+      margin: 2rem 0 0;
+      font-size: 0.82rem;
+      color: #aaa;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    /* THESEN */
+    .thesen { border-bottom: 1px solid var(--rule); }
+
+    .these {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .these:last-child { border-bottom: none; }
+
+    @media (max-width: 680px) {
+      .these { grid-template-columns: 1fr; gap: 1rem; }
+    }
+
+    .these-tag {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.6rem;
+    }
+
+    .these-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      line-height: 1.15;
+      color: var(--white);
+    }
+
+    .these-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #ddd;
+      border-left: 2px solid var(--rule);
+      padding-left: 2rem;
+    }
+
+    .these-text em { color: var(--white); font-style: italic; }
+
+    /* TEXTE */
+    .downloads { border-bottom: 1px solid var(--rule); }
+
+    .download-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: var(--white);
+      transition: background 0.12s;
+    }
+
+    .download-item:last-child { border-bottom: none; }
+    .download-item:hover { background: #242426; padding-left: 0.5rem; }
+
+    .dl-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      color: var(--mid);
+      width: 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .dl-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+
+    .dl-meta {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    .dl-arrow {
+      margin-left: auto;
+      font-size: 1.1rem;
+      color: var(--mid);
+      flex-shrink: 0;
+    }
+
+    /* FRAGEN */
+    .fragen { border-bottom: 1px solid var(--rule); }
+
+    .frage {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .frage:last-child { border-bottom: none; }
+
+    @media (max-width: 680px) {
+      .frage { grid-template-columns: 1fr; gap: 1rem; }
+    }
+
+    .frage-tag {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.6rem;
+    }
+
+    .frage-q {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      line-height: 1.15;
+      color: var(--white);
+    }
+
+    .frage-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #ddd;
+      border-left: 2px solid var(--rule);
+      padding-left: 2rem;
+    }
+
+    .frage-text em { color: var(--white); font-style: italic; }
+
+    /* GEGENWART */
+    .gegenwart { border-bottom: 1px solid var(--rule); }
+
+    .krise {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .krise:last-child { border-bottom: none; }
+
+    .krise-label {
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.5rem;
+    }
+
+    .krise-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .krise-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #ddd;
+      max-width: 700px;
+    }
+
+    .krise-text em { color: var(--white); font-style: italic; }
+
+    /* PORTRAIT */
+    .header-portrait img {
+      width: 100%;
+      display: block;
+      filter: grayscale(100%) contrast(1.1);
+      opacity: 0.85;
+    }
+
+    .header-portrait figcaption {
+      font-size: 0.6rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #555;
+      margin-top: 0.5rem;
+      line-height: 1.4;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 2.5rem;
+      text-align: center;
+    }
+
+    .f-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: var(--mid);
+      margin-bottom: 0.3rem;
+    }
+
+    .f-info {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-home">Dialektik <span>der Zapfanlage</span></a>
+  <a href="index.html" class="nav-back">← Zurück zum Kanon</a>
+</nav>
+
+<header>
+  <div class="header-inner">
+    <div class="header-text">
+      <div class="eyebrow">Kanon · 12 · Sondersitzung · Zum Gedenken · 1929–2026</div>
+      <div class="author-title">Jürgen Habermas</div>
+      <div class="author-subtitle">1929–2026 &nbsp;·&nbsp; Kommunikatives Handeln · Deliberative Demokratie</div>
+    </div>
+    <figure class="header-portrait">
+      <img src="data:image/jpeg;base64,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" alt="Portrait Jürgen Habermas" />
+      <figcaption>Galle HNL 2010 / Flickr · CC BY-NC-ND 2.0</figcaption>
+    </figure>
+  </div>
+  <div class="header-bar">
+    <div class="header-bar-inner">
+      <div class="item"><span>Sondersitzung — </span><strong>24. März 2026</strong></div>
+      <div class="item"><span>Hauptwerk — </span><strong>Theorie des kommunikativen Handelns (1981)</strong></div>
+      <div class="item"><span>Schule — </span><strong>Frankfurter Schule · 2. Generation</strong></div>
+      <div class="item"><span>Eintritt — </span><strong>Frei</strong></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- 01 BIO -->
+  <div class="section-head">
+    <span class="section-num">01</span>
+    <h2>Wer war Habermas?</h2>
+  </div>
+
+  <div class="bio">
+    <div class="bio-text">
+      <p>Jürgen Habermas wurde 1929 in Düsseldorf geboren und wuchs im nationalsozialistischen Deutschland auf – eine Prägung, die sein gesamtes Denken durchzieht. Die Erfahrung, wie eine Gesellschaft in Barbarei kippen kann, machte ihn zeitlebens zum leidenschaftlichen Verteidiger demokratischer Vernunft und deliberativer Öffentlichkeit.</p>
+      <p>Als Schüler Adornos und Horkheimers gehörte Habermas zur zweiten Generation der Frankfurter Schule – doch er brach mit deren kulturpessimistischen Schlussfolgerungen. Während Adorno und Horkheimer die Aufklärung als gescheitert betrachteten, hielt Habermas an ihrem <strong>unvollendetem Projekt</strong> fest: Vernunft sei nicht am Ende, sie müsse nur kommunikativ gedacht werden.</p>
+      <p>Habermas war kein Elfenbeinturm-Philosoph. Er mischte sich in die großen Debatten seiner Zeit ein – den Historikerstreit, den NATO-Doppelbeschluss, den Irak-Krieg, zuletzt die Flüchtlingspolitik und Europa. Er starb am 14. März 2026 im Alter von 96 Jahren – und hinterließ ein Werk das aktueller ist denn je.</p>
+
+      <div class="fokus-hinweis">
+        <strong style="color: #f2f2f0;">Hinweis zum Fokus dieser Seite:</strong> Habermas' Werk umfasst Jahrzehnte und Dutzende von Büchern. Wir konzentrieren uns hier auf die <em>Theorie des kommunikativen Handelns</em> (1981) – sein Hauptwerk – und fragen was es uns heute zu sagen hat.
+      </div>
+    </div>
+    <div class="bio-facts">
+      <div class="fact">
+        <div class="fact-label">Geboren</div>
+        <div class="fact-value">1929</div>
+        <div class="fact-sub">Düsseldorf, Deutschland</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Gestorben</div>
+        <div class="fact-value">2026</div>
+        <div class="fact-sub">14. März · 96 Jahre</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Hauptwerk</div>
+        <div class="fact-value">Theorie des kommunikativen Handelns</div>
+        <div class="fact-sub">1981 · 2 Bände · ca. 1200 Seiten</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Schule</div>
+        <div class="fact-value">Frankfurter Schule</div>
+        <div class="fact-sub">2. Generation · Kritische Theorie</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Kernbegriff</div>
+        <div class="fact-value">Kommunikative Vernunft</div>
+        <div class="fact-sub">Verständigungsorientiertes Handeln</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 THESEN -->
+  <div class="section-head">
+    <span class="section-num">02</span>
+    <h2>Fünf Kernthesen</h2>
+  </div>
+
+  <div class="thesen">
+    <div class="these">
+      <div class="these-left">
+        <div class="these-tag">These 01 · Kommunikatives Handeln</div>
+        <div class="these-title">Sprache ist mehr als ein Werkzeug</div>
+      </div>
+      <div class="these-text">
+        Habermas unterscheidet zwei Arten zu handeln: <em>strategisch</em> – ich will etwas erreichen und nutze andere dafür – und <em>kommunikativ</em> – ich versuche mich zu verständigen und lasse mich vom besseren Argument überzeugen. Nur kommunikatives Handeln trägt Gesellschaft. Strategische Kommunikation ist Manipulation.
+      </div>
+    </div>
+    <div class="these">
+      <div class="these-left">
+        <div class="these-tag">These 02 · Geltungsansprüche</div>
+        <div class="these-title">Jede Aussage erhebt drei Ansprüche</div>
+      </div>
+      <div class="these-text">
+        Wenn wir sprechen, behaupten wir immer gleichzeitig: Das ist <em>wahr</em> (Wahrheitsanspruch), ich meine es <em>aufrichtig</em> (Wahrhaftigkeitsanspruch), und es ist <em>legitim</em> in diesem Kontext zu sagen (Richtigkeitsanspruch). Werden diese Ansprüche verletzt, bricht Kommunikation zusammen – oder wird zur Propaganda.
+      </div>
+    </div>
+    <div class="these">
+      <div class="these-left">
+        <div class="these-tag">These 03 · Lebenswelt & System</div>
+        <div class="these-title">Das System kolonisiert die Lebenswelt</div>
+      </div>
+      <div class="these-text">
+        Habermas unterscheidet zwischen <em>Lebenswelt</em> – dem alltäglichen Raum von Kommunikation, Kultur und Solidarität – und <em>System</em> – Markt und Staat mit ihren Steuerungsmedien Geld und Macht. Die Pathologie der Moderne: Das System dringt in die Lebenswelt ein und verdrängt kommunikative durch strategische Rationalität.
+      </div>
+    </div>
+    <div class="these">
+      <div class="these-left">
+        <div class="these-tag">These 04 · Deliberative Demokratie</div>
+        <div class="these-title">Demokratie braucht echten Diskurs</div>
+      </div>
+      <div class="these-text">
+        Für Habermas ist Demokratie nicht nur Mehrheitsentscheid, sondern <em>deliberativer Prozess</em> – öffentliche Beratung durch Austausch von Argumenten. Legitimität entsteht nicht durch Abstimmung allein, sondern durch die Qualität des vorausgehenden Diskurses. <em>Wer nicht gehört wird, ist nicht wirklich repräsentiert.</em>
+      </div>
+    </div>
+    <div class="these">
+      <div class="these-left">
+        <div class="these-tag">These 05 · Öffentlichkeit</div>
+        <div class="these-title">Die Öffentlichkeit ist das Herzstück</div>
+      </div>
+      <div class="these-text">
+        Habermas' Begriff der bürgerlichen Öffentlichkeit beschreibt einen Raum zwischen Staat und Privatheit, in dem Bürger*innen über gemeinsame Angelegenheiten debattieren. <em>Dieser Raum ist fragil.</em> Er kann durch Kommerzialisierung, Propaganda und Desinteresse erodieren – und damit die Demokratie selbst.
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 TEXTE -->
+  <div class="section-head">
+    <span class="section-num">03</span>
+    <h2>Texte &amp; Einstieg</h2>
+  </div>
+
+  <div class="downloads">
+    <a class="download-item" href="https://www.arte.tv/de/videos/098622-000-A/habermas-philosoph-und-europaeer/" target="_blank" rel="noopener">
+      <div class="dl-num">12a</div>
+      <div>
+        <div class="dl-title">Habermas – Philosoph und Europäer</div>
+        <div class="dl-meta">Dokumentarfilm · Arte · Deutsch · Kostenlos</div>
+      </div>
+      <div class="dl-arrow">↗</div>
+    </a>
+    <a class="download-item" href="https://soztheo.de/soziologie/schluesselwerke-der-soziologie/juergen-habermas-theorie-des-kommunikativen-handelns-1981/" target="_blank" rel="noopener">
+      <div class="dl-num">12b</div>
+      <div>
+        <div class="dl-title">Habermas: Theorie des kommunikativen Handelns – Einführung</div>
+        <div class="dl-meta">Einstieg · soztheo.de · Deutsch · Kostenlos · Gut strukturiert</div>
+      </div>
+      <div class="dl-arrow">↗</div>
+    </a>
+    <a class="download-item" href="https://de.wikipedia.org/wiki/Theorie_des_kommunikativen_Handelns" target="_blank" rel="noopener">
+      <div class="dl-num">12c</div>
+      <div>
+        <div class="dl-title">Theorie des kommunikativen Handelns – Wikipedia</div>
+        <div class="dl-meta">Überblick · Wikipedia · Deutsch · Kostenlos · Mit Begriffserklärungen</div>
+      </div>
+      <div class="dl-arrow">↗</div>
+    </a>
+  </div>
+
+  <!-- 04 DISKUSSIONSFRAGEN -->
+  <div class="section-head">
+    <span class="section-num">04</span>
+    <h2>Diskussionsfragen</h2>
+  </div>
+
+  <div class="fragen">
+    <div class="frage">
+      <div class="frage-left">
+        <div class="frage-tag">Frage 01 · Kommunikation</div>
+        <div class="frage-q">Reden wir noch miteinander – oder aneinander vorbei?</div>
+      </div>
+      <div class="frage-text">
+        Habermas braucht für kommunikatives Handeln den aufrichtigen Versuch der Verständigung. Was passiert wenn Diskussion zur Performance wird – in sozialen Medien, im Parlament, am Stammtisch? <em>Wann hört Kommunikation auf, kommunikativ zu sein?</em>
+      </div>
+    </div>
+    <div class="frage">
+      <div class="frage-left">
+        <div class="frage-tag">Frage 02 · Öffentlichkeit</div>
+        <div class="frage-q">Gibt es noch eine gemeinsame Öffentlichkeit?</div>
+      </div>
+      <div class="frage-text">
+        Habermas dachte Öffentlichkeit als gemeinsamen Raum des Austauschs. Filterblasen, Algorithmen und Plattformlogiken fragmentieren diesen Raum. <em>Kann Demokratie ohne geteilte Öffentlichkeit funktionieren – oder ist sie bereits beschädigt?</em>
+      </div>
+    </div>
+    <div class="frage">
+      <div class="frage-left">
+        <div class="frage-tag">Frage 03 · Legitimität</div>
+        <div class="frage-q">Wann ist eine Entscheidung legitim?</div>
+      </div>
+      <div class="frage-text">
+        Für Habermas reicht Mehrheit allein nicht. Legitimität braucht Diskurs. <em>Was bedeutet das für Entscheidungen die unter Zeitdruck fallen, in Krisen, in der Klimapolitik?</em> Kann deliberative Demokratie überhaupt schnell genug sein?
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 GEGENWART -->
+  <div class="section-head">
+    <span class="section-num">05</span>
+    <h2>Bezug zur Gegenwart</h2>
+  </div>
+
+  <div class="gegenwart">
+    <div class="krise">
+      <div class="krise-label">Krise 01 · Social Media &amp; Öffentlichkeit</div>
+      <div class="krise-title">Die Plattform als Gegenöffentlichkeit – oder als Zerstörer?</div>
+      <div class="krise-text">Habermas hoffte lange auf das demokratische Potential des Internets. Zuletzt wurde er skeptischer: Algorithmen belohnen Empörung statt Argument, Reichweite ersetzt Qualität, strategische Kommunikation verdrängt die kommunikative. <em>Twitter, TikTok, Instagram – sind das neue Agoras oder ihr Gegenteil?</em></div>
+    </div>
+    <div class="krise">
+      <div class="krise-label">Krise 02 · Demokratische Prozesse</div>
+      <div class="krise-title">Wenn Institutionen das Vertrauen verlieren</div>
+      <div class="krise-text">Habermas' Demokratiebegriff hängt an funktionierenden Institutionen – Parlamenten, Gerichten, freier Presse. Was passiert wenn diese Institutionen als korrupt, parteiisch oder irrelevant wahrgenommen werden? <em>Ist der Vertrauensverlust das Symptom – oder die eigentliche Krise?</em></div>
+    </div>
+    <div class="krise">
+      <div class="krise-label">Krise 03 · Populismus &amp; Rechtsruck</div>
+      <div class="krise-title">Populismus als Antwort auf gescheiterten Diskurs</div>
+      <div class="krise-text">Habermas würde Populismus als Pathologie des Diskurses lesen: Wenn Teile der Bevölkerung das Gefühl haben, nicht gehört zu werden, suchen sie Gehör außerhalb der etablierten Kanäle. <em>Ist der Rechtsruck Symptom einer kolonierten Lebenswelt – oder ihrer Verteidigung?</em></div>
+    </div>
+    <div class="krise">
+      <div class="krise-label">Krise 04 · Künstliche Intelligenz</div>
+      <div class="krise-title">Kann eine Maschine kommunikativ handeln?</div>
+      <div class="krise-text">Habermas' kommunikatives Handeln setzt Aufrichtigkeit voraus – den echten Versuch der Verständigung. KI-Systeme simulieren Kommunikation, ohne Geltungsansprüche zu erheben. <em>Was passiert mit dem öffentlichen Diskurs wenn wir nicht mehr wissen, ob wir mit Menschen oder Maschinen sprechen?</em></div>
+    </div>
+  </div>
+
+  <!-- 06 DISKUSSION -->
+  <div class="section-head">
+    <span class="section-num">06</span>
+    <h2>Diskussion &amp; Kommentare</h2>
+  </div>
+
+  <div style="padding: 2rem 0;">
+    <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 1.5rem; line-height: 1.7;">
+      <strong style="color: #f2f2f0;">Warst du dabei – oder konntest nicht kommen?</strong><br/>
+      Setz die Diskussion hier fort. Für Kommentare brauchst du einen GitHub-Account –
+      kostenlos unter <a href="https://github.com/signup" target="_blank" rel="noopener" style="color: #f2f2f0;">github.com/signup</a>.
+    </p>
+    <div style="background: #2c2c2e; border-radius: 4px; padding: 2rem;">
+      <script src="https://giscus.app/client.js"
+          data-repo="Kleandra007/Zapfanlage"
+          data-repo-id="R_kgDORm8uNw"
+          data-category="Announcements"
+          data-category-id="DIC_kwDORm8uN84C4hBv"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="dark_dimmed"
+          data-lang="de"
+          crossorigin="anonymous"
+          async>
+      </script>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="f-title">Dialektik der Zapfanlage</div>
+  <div class="f-info">Köln-Ehrenfeld &nbsp;·&nbsp; Müllers &nbsp;·&nbsp; Dienstags 20:00 &nbsp;·&nbsp; Eintritt frei</div>
+</footer>
+
+<script data-goatcounter="https://kleandra007.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
