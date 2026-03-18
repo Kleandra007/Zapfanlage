@@ -206,9 +206,9 @@
     .concept { border-bottom: 1px solid var(--rule); }
 
     .concept p {
-      font-size: 1rem;
+      font-size: 1.2rem;
       line-height: 1.9;
-      color: #bbb;
+      color: #ddd;
       padding: 1.6rem 0;
       border-bottom: 1px solid var(--rule);
     }
@@ -291,13 +291,32 @@
 
     .thinker.open .tag { color: #666; margin-top: 0.8rem; }
 
+
+    .thinker.active {
+      background: #f2f2f0;
+      color: #1c1c1e;
+    }
+    .thinker.active .num { color: #888; }
+    .thinker.active .name { color: #1c1c1e; }
+    .thinker.active .years { color: #444; }
+    .thinker.active .tag { color: #444; }
+    .thinker.active:hover { background: #e8e8e6; }
+    .thinker.active::after {
+      content: '→ Jetzt';
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 0.4rem;
+    }
     /* ── MITMACHEN ── */
     .mitmachen { border-bottom: 1px solid var(--rule); }
 
     .mitmachen p {
-      font-size: 1rem;
+      font-size: 1.2rem;
       line-height: 1.9;
-      color: #bbb;
+      color: #ddd;
       padding: 1.6rem 0;
       border-bottom: 1px solid var(--rule);
     }
@@ -537,24 +556,29 @@
     <h2>Der Kanon — ein erster Entwurf</h2>
   </div>
 
+  <p style="font-size:0.9rem; letter-spacing:2px; text-transform:uppercase; color:#f2f2f0; font-weight:700; margin-bottom:1rem;">
+    Klick auf eine Kachel für Texte &amp; Vorbereitung &nbsp;·&nbsp; <span style="background:#f2f2f0; color:#1c1c1e; padding:0.15rem 0.5rem; font-size:0.8rem; font-weight:700;">Weiß = aktuelle Sitzung</span>
+  </p>
   <div class="reading-list">
     <a href="hobbes.html" class="thinker" style="text-decoration:none;"><div class="num">01</div><div class="name">Thomas Hobbes</div><div class="years">1588–1679</div><div class="tag">Macht, Staat, Naturzustand</div></a>
     <a href="hegel.html" class="thinker" style="text-decoration:none;"><div class="num">02</div><div class="name">G.W.F. Hegel</div><div class="years">1770–1831</div><div class="tag">Dialektik, Geschichte, Geist</div></a>
-    <div class="thinker"><div class="num">03</div><div class="name">Karl Marx</div><div class="years">1818–1883</div><div class="tag">Kapital, Klasse, Ideologie</div></div>
-    <div class="thinker"><div class="num">04</div><div class="name">Antonio Gramsci</div><div class="years">1891–1937</div><div class="tag">Hegemonie, Zivilgesellschaft</div></div>
-    <div class="thinker"><div class="num">05</div><div class="name">Walter Benjamin</div><div class="years">1892–1940</div><div class="tag">Geschichte, Erinnerung, Messianismus</div></div>
-    <div class="thinker"><div class="num">06</div><div class="name">Hannah Arendt</div><div class="years">1906–1975</div><div class="tag">Totalitarismus, Macht, Pluralität</div></div>
-    <div class="thinker"><div class="num">07</div><div class="name">Adorno &amp; Horkheimer</div><div class="years">1944</div><div class="tag">Dialektik der Aufklärung</div></div>
-    <div class="thinker"><div class="num">08</div><div class="name">Frantz Fanon</div><div class="years">1925–1961</div><div class="tag">Kolonialismus, Gewalt, Befreiung</div></div>
-    <div class="thinker"><div class="num">09</div><div class="name">Michel Foucault</div><div class="years">1926–1984</div><div class="tag">Macht, Wissen, Diskurs</div></div>
-    <div class="thinker"><div class="num">10</div><div class="name">Pierre Bourdieu</div><div class="years">1930–2002</div><div class="tag">Kapital, Feld, Habitus</div></div>
-    <div class="thinker"><div class="num">11</div><div class="name">Jürgen Habermas</div><div class="years">1929–2026</div><div class="tag">Kommunikatives Handeln</div></div>
-    <div class="thinker"><div class="num">12</div><div class="name">bell hooks</div><div class="years">1952–2021</div><div class="tag">Feminismus, Race, Klasse</div></div>
-    <div class="thinker"><div class="num">13</div><div class="name">Axel Honneth</div><div class="years">1949–</div><div class="tag">Anerkennung, Kampf</div></div>
-    <div class="thinker"><div class="num">14</div><div class="name">Judith Butler</div><div class="years">1956–</div><div class="tag">Performativität, Körper, Norm</div></div>
-    <div class="thinker"><div class="num">15</div><div class="name">Achille Mbembe</div><div class="years">1957–</div><div class="tag">Nekropolitik, Postkolonialismus</div></div>
-    <div class="thinker"><div class="num">16</div><div class="name">Chantal Mouffe</div><div class="years">1943–</div><div class="tag">Demokratie, Antagonismus, Populismus</div></div>
-    <div class="thinker"><div class="num">17</div><div class="name">Silvia Federici</div><div class="years">1942–</div><div class="tag">Reproduktionsarbeit, Kapitalismus</div></div>
+    <div class="thinker"><div class="num">03</div><div class="name">Schopenhauer</div><div class="years">1788–1860</div><div class="tag">Wille, Pessimismus, Kunst</div></div>
+    <div class="thinker"><div class="num">04</div><div class="name">Karl Marx</div><div class="years">1818–1883</div><div class="tag">Kapital, Klasse, Ideologie</div></div>
+    <div class="thinker"><div class="num">05</div><div class="name">Antonio Gramsci</div><div class="years">1891–1937</div><div class="tag">Hegemonie, Zivilgesellschaft</div></div>
+    <div class="thinker"><div class="num">06</div><div class="name">Walter Benjamin</div><div class="years">1892–1940</div><div class="tag">Geschichte, Erinnerung, Messianismus</div></div>
+    <div class="thinker"><div class="num">07</div><div class="name">Hannah Arendt</div><div class="years">1906–1975</div><div class="tag">Totalitarismus, Macht, Pluralität</div></div>
+    <div class="thinker"><div class="num">08</div><div class="name">Adorno &amp; Horkheimer</div><div class="years">1944</div><div class="tag">Dialektik der Aufklärung</div></div>
+    <div class="thinker"><div class="num">09</div><div class="name">Frantz Fanon</div><div class="years">1925–1961</div><div class="tag">Kolonialismus, Gewalt, Befreiung</div></div>
+    <div class="thinker"><div class="num">10</div><div class="name">Michel Foucault</div><div class="years">1926–1984</div><div class="tag">Macht, Wissen, Diskurs</div></div>
+    <div class="thinker"><div class="num">11</div><div class="name">Pierre Bourdieu</div><div class="years">1930–2002</div><div class="tag">Kapital, Feld, Habitus</div></div>
+    <a href="habermas.html" class="thinker active" style="text-decoration:none;"><div class="num">12</div><div class="name">Jürgen Habermas</div><div class="years">1929–2026</div><div class="tag">Kommunikatives Handeln</div></a>
+    <div class="thinker"><div class="num">13</div><div class="name">Peter Sloterdijk</div><div class="years">1947–</div><div class="tag">Sphären, Kritik, Gegenwart</div></div>
+    <div class="thinker"><div class="num">14</div><div class="name">bell hooks</div><div class="years">1952–2021</div><div class="tag">Feminismus, Race, Klasse</div></div>
+    <div class="thinker"><div class="num">15</div><div class="name">Axel Honneth</div><div class="years">1949–</div><div class="tag">Anerkennung, Kampf</div></div>
+    <div class="thinker"><div class="num">16</div><div class="name">Judith Butler</div><div class="years">1956–</div><div class="tag">Performativität, Körper, Norm</div></div>
+    <div class="thinker"><div class="num">17</div><div class="name">Achille Mbembe</div><div class="years">1957–</div><div class="tag">Nekropolitik, Postkolonialismus</div></div>
+    <div class="thinker"><div class="num">18</div><div class="name">Chantal Mouffe</div><div class="years">1943–</div><div class="tag">Demokratie, Antagonismus, Populismus</div></div>
+    <div class="thinker"><div class="num">19</div><div class="name">Silvia Federici</div><div class="years">1942–</div><div class="tag">Reproduktionsarbeit, Kapitalismus</div></div>
     <a class="thinker open" href="/cdn-cgi/l/email-protection#9edadbd7d0dbdedbd3dfd7d2b0dadba1edebfcf4fbfdeaa3d2fbf5eabbddadbbdcddecfbe8f1ecedfdf6f2fff9bbacaedaf7fff2fbf5eaf7f5bbacaefafbecbbacaec4ffeef8fff0f2fff9fbb8fcf1fae7a3d3fbf7f0bbacaec8f1ecedfdf6f2fff9bbaddfbbaedfbbaedfdfebeaf1ecf7f0bbacd8dfebeaf1ecbbaddfbbacaebbaedfcaf7eafbf2bbaddfbbacaebbaedfd2f7f0f5bbacaef1fafbecbbacaecfebfbf2f2fbbbaddfbbacaebbaedfbbaedfc9ffecebf3bbacaefaf7fbedfbecbbacaecafbe6eabbadd8bbacae" style="text-decoration:none; cursor:pointer;">
       <div class="num">?</div>
       <div class="name">Dein Vorschlag</div>
@@ -572,40 +596,10 @@
     <p>Texte werden jeweils eine Woche vorher hier zum Download bereitgestellt. Du kannst auch eigene Lektürevorschläge einbringen. Die Runde entscheidet. Mehrheitsprinzip, solange es kein Konsens ist. <em>(Habermas hätte das anders gewollt. Darüber reden wir dann, wenn wir bei Habermas sind.)</em></p>
   </section>
 
+
+
   <div class="section-head">
     <span class="section-num">04</span>
-    <h2>Texte zum Download</h2>
-  </div>
-
-  <div class="downloads">
-    <a class="download-item" href="https://www.bpb.de/shop/zeitschriften/apuz/freiheit-und-sicherheit-2022/511501/zwischen-leviathan-und-kantischem-rechtszustand/" target="_blank" rel="noopener">
-      <div class="dl-num">01a</div>
-      <div>
-        <div class="dl-title">Hobbes: Naturzustand &amp; Gesellschaftsvertrag — Einführung</div>
-        <div class="dl-meta">17. März 2026 · Einstieg · bpb.de · Deutsch · kostenlos</div>
-      </div>
-      <div class="dl-arrow">↗</div>
-    </a>
-    <a class="download-item" href="https://philosophie.phil-fak.uni-koeln.de/sites/philo-sem/Personen/Huettemann/Naturgesetzt_und_Staasvertrag_bei_Hobbes.pdf" target="_blank" rel="noopener">
-      <div class="dl-num">01b</div>
-      <div>
-        <div class="dl-title">Hobbes: Naturzustand und Staatsvertrag — Aufsatz</div>
-        <div class="dl-meta">17. März 2026 · Vertiefung · Universität zu Köln-Ehrenfeld · Deutsch · PDF</div>
-      </div>
-      <div class="dl-arrow">↗</div>
-    </a>
-    <a class="download-item" href="Thesenpapier_Hobbes und der Leviathan.pdf" target="_blank" rel="noopener">
-      <div class="dl-num">02</div>
-      <div>
-        <div class="dl-title">Thesenpapier — Hobbes, Leviathan &amp; Naturzustand</div>
-        <div class="dl-meta">17. März 2026 · Erster Abend · Deutsch · PDF</div>
-      </div>
-      <div class="dl-arrow">↓</div>
-    </a>
-  </div>
-
-  <div class="section-head">
-    <span class="section-num">05</span>
     <h2>Kommentare &amp; Diskussion</h2>
   </div>
 
